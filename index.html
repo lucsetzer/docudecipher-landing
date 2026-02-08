@@ -4,182 +4,263 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocuDecipher - Understand Code & Documents in Plain English</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    /* GLOBAL RESET - No surprises */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-    
-    body {
-        font-family: system-ui, -apple-system, sans-serif;
-        line-height: 1.6;
-    }
-    
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-    }
-    
-    /* ===== DARK SECTIONS ===== */
-    /* These have DARK background, LIGHT text */
-    .dark-section {
-        background: #0f172a;
-        color: #f1f5f9;
-        padding: 4rem 1rem;
-    }
-    
-    /* Navbar is dark */
-    nav.dark-section {
-        padding: 1rem;
-    }
-    
-    /* Hero is dark with gradient */
-    .hero.dark-section {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        text-align: center;
-    }
-    
-    /* Footer is dark */
-    footer.dark-section {
-        padding: 3rem 1rem;
-    }
-    
-    /* ===== LIGHT SECTIONS ===== */
-    /* These have WHITE background, DARK text */
-    .light-section {
-        background: white;
-        color: #1e293b;
-        padding: 4rem 1rem;
-    }
-    
-    /* ===== SPECIAL COMPONENTS ===== */
-    /* Safety Notice - YELLOW with DARK text */
-    .safety-notice {
-        background: #fffbeb;
-        border-left: 4px solid #f59e0b;
-        padding: 1.5rem;
-        margin: 2rem 0;
-        border-radius: 4px;
-        color: #78350f;
-    }
-    
-    .safety-notice h3 {
-        color: #92400e;
-    }
-    
-    .safety-notice li {
-        color: #78350f;
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Category Grid - SIMPLE */
-    .category-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin: 3rem 0;
-    }
-    
-    .category-card {
-        background: white;
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 2rem;
-        color: #1e293b;
-        transition: all 0.3s ease;
-    }
-    
-    .category-card:hover {
-        border-color: #3b82f6;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        transform: translateY(-5px);
-    }
-    
-    .category-icon {
-        font-size: 2.5rem;
-        color: #3b82f6;
-        margin-bottom: 1rem;
-    }
-    
-    /* Code Feature - DARK with LIGHT text */
-    .code-feature {
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-        color: white;
-        border-radius: 12px;
-        padding: 3rem;
-        margin: 2rem 0;
-    }
-    
-    .code-feature h2,
-    .code-feature p {
-        color: white;
-    }
-    
-    /* CTA Buttons */
-    .cta-button {
-        background: #3b82f6;
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 8px;
-        font-weight: bold;
-        display: inline-block;
-        text-decoration: none;
-        border: none;
-        cursor: pointer;
-    }
-    
-    .cta-button:hover {
-        background: #2563eb;
-        transform: scale(1.05);
-    }
-    
-    /* How It Works steps */
-    .steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        text-align: center;
-    }
-    
-    .step-number {
-        background: #3b82f6;
-        color: white;
-        width: 60px;
-        height: 60px;
-        line-height: 60px;
-        border-radius: 50%;
-        margin: 0 auto 1rem;
-        font-weight: bold;
-    }
-</style>
+        /* === RESET EVERYTHING === */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        /* === BASE STYLES === */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            background: #0f172a;
+            color: #f1f5f9;
+        }
+        
+        /* === NAVBAR === */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo-icon {
+            color: #fbbf24;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background: #1e293b;
+            color: white;
+        }
+        
+        /* === SECTIONS === */
+        .section {
+            padding: 4rem 2rem;
+        }
+        
+        .section-dark {
+            background: #0f172a;
+            color: #f1f5f9;
+        }
+        
+        .section-light {
+            background: white;
+            color: #1e293b;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* === SAFETY NOTICE === */
+        .safety-notice {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            color: #78350f;
+        }
+        
+        /* === CATEGORY GRID === */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .category-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            color: #1e293b;
+        }
+        
+        .category-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            transition: 0.3s;
+        }
+        
+        /* === PRICING === */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2.5rem;
+            color: #1e293b;
+            text-align: center;
+            position: relative;
+        }
+        
+        .pricing-card.popular {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3b82f6;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin: 1rem 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #64748b;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 0.5rem 0;
+            color: #475569;
+        }
+        
+        .pricing-features li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        /* === BUTTONS === */
+        .btn {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #2563eb;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+        }
+        
+        .btn-outline:hover {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        /* === CODE FEATURE === */
+        .code-feature {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+        
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .category-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="dark-section">
-        <div class="container">
-            <ul>
-                <li><strong><i class="fas fa-lightbulb"></i> DocuDecipher</strong></li>
-            </ul>
-            <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#" role="button" class="cta-button">Try Free</a></li>
-            </ul>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-lightbulb logo-icon"></i>
+            <span>DocuDecipher</span>
         </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="/app" class="btn">Try Free</a></li>
+        </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero dark-section">
+    <!-- HERO -->
+    <section class="section section-dark hero">
         <div class="container">
-            <h1>Understand Code & Documents in Plain English</h1>
-            <p class="subtitle">DocuDecipher helps students, developers, and researchers unpack complex codebases, academic papers, and technical documentation.</p>
-            <a href="#upload" role="button" class="cta-button" style="font-size: 1.2rem; padding: 1.2rem 2.5rem;">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Understand Code & Documents in Plain English</h1>
+            <p style="font-size: 1.5rem; color: #cbd5e1; margin-bottom: 2rem;">
+                DocuDecipher helps students, developers, and researchers unpack complex codebases, academic papers, and technical documentation.
+            </p>
+            <a href="#pricing" class="btn" style="font-size: 1.2rem; padding: 1.2rem 2.5rem;">
                 <i class="fas fa-rocket"></i> Start Deciphering
             </a>
             <p style="margin-top: 1rem; color: #94a3b8;">
@@ -188,181 +269,230 @@
         </div>
     </section>
 
-    <!-- Safety Notice -->
+    <!-- SAFETY NOTICE -->
     <div class="container">
         <div class="safety-notice">
             <h3><i class="fas fa-shield-alt"></i> Document Safety & Privacy</h3>
             <p><strong>DocuDecipher is designed for educational and technical documents only.</strong></p>
             <ul style="margin: 1rem 0; padding-left: 1.5rem;">
-                <li>❌ <strong>Do NOT upload:</strong> Medical records, legal contracts, financial documents with account numbers</li>
-                <li>✅ <strong>Perfect for:</strong> Codebases, academic papers, technical docs, research articles</li>
-                <li>🛡️ <strong>Your privacy:</strong> All files encrypted and automatically deleted within 1 hour</li>
+                <li>❌ <strong>Do NOT upload:</strong> Medical records, legal contracts, financial documents</li>
+                <li>✅ <strong>Perfect for:</strong> Codebases, academic papers, technical docs</li>
+                <li>🛡️ <strong>Your privacy:</strong> All files encrypted and auto-deleted within 1 hour</li>
             </ul>
         </div>
     </div>
-    
-    <!-- 6 Categories -->
-    <section id="features" class="light-section">
+
+    <!-- FEATURES -->
+    <section id="features" class="section section-light">
         <div class="container">
-            <h2>What Can You Decipher?</h2>
+            <h2 style="text-align: center; margin-bottom: 3rem; color: #1e293b;">What Can You Decipher?</h2>
             <div class="category-grid">
-             <!-- Category 1: Codebases -->
-            <div class="category-card">
-                <div class="category-icon">
-                    <i class="fas fa-code"></i>
+                <!-- Card 1 -->
+                <div class="category-card">
+                    <div style="font-size: 2.5rem; color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 style="color: #1e293b; margin-bottom: 1rem;">Codebases</h3>
+                    <p style="color: #475569;">Upload GitHub repos or ZIP files. Get plain-English explanations of architecture.</p>
+                    <p style="color: #475569; margin-top: 1rem;"><strong>Perfect for:</strong> Students, junior developers</p>
                 </div>
-                <h3>Codebases</h3>
-                <p>Upload GitHub repos or ZIP files. Get plain-English explanations of architecture, key functions, and learning points.</p>
-                <p><strong>Perfect for:</strong> Students, junior developers, non-technical founders</p>
-            </div>
-            
-            <!-- Category 2: Academic Papers -->
-            <div class="category-card">
-                <div class="category-icon">
-                    <i class="fas fa-graduation-cap"></i>
+                
+                <!-- Card 2 -->
+                <div class="category-card">
+                    <div style="font-size: 2.5rem; color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 style="color: #1e293b; margin-bottom: 1rem;">Academic Papers</h3>
+                    <p style="color: #475569;">Break down dense research papers into clear summaries and methodologies.</p>
+                    <p style="color: #475569; margin-top: 1rem;"><strong>Perfect for:</strong> Students, researchers</p>
                 </div>
-                <h3>Academic Papers</h3>
-                <p>Break down dense research papers into clear summaries, methodologies, and key findings.</p>
-                <p><strong>Perfect for:</strong> Students, researchers, lifelong learners</p>
-            </div>
-            
-            <!-- Category 3: Technical Documentation -->
-            <div class="category-card">
-                <div class="category-icon">
-                    <i class="fas fa-book"></i>
+                
+                <!-- Card 3 -->
+                <div class="category-card">
+                    <div style="font-size: 2.5rem; color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 style="color: #1e293b; margin-bottom: 1rem;">Technical Documentation</h3>
+                    <p style="color: #475569;">Understand software manuals, API docs, and technical guides without jargon.</p>
+                    <p style="color: #475569; margin-top: 1rem;"><strong>Perfect for:</strong> Developers, technical writers</p>
                 </div>
-                <h3>Technical Documentation</h3>
-                <p>Understand software manuals, API docs, and technical guides without the jargon.</p>
-                <p><strong>Perfect for:</strong> Developers, IT professionals, technical writers</p>
-            </div>
-            
-            <!-- Category 4: Terms of Service -->
-            <div class="category-card">
-                <div class="category-icon">
-                    <i class="fas fa-file-contract"></i>
+                
+                <!-- Card 4 -->
+                <div class="category-card">
+                    <div style="font-size: 2.5rem; color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 style="color: #1e293b; margin-bottom: 1rem;">Terms of Service</h3>
+                    <p style="color: #475569;">Decode software EULAs, app terms, and service agreements into plain language.</p>
+                    <p style="color: #475569; margin-top: 1rem;"><strong>Perfect for:</strong> Consumers, privacy-conscious users</p>
                 </div>
-                <h3>Terms of Service</h3>
-                <p>Decode software EULAs, app terms, and service agreements into plain language.</p>
-                <p><strong>Perfect for:</strong> Consumers, software users, privacy-conscious individuals</p>
-            </div>
-            
-            <!-- Category 5: Research Articles -->
-            <div class="category-card">
-                <div class="category-icon">
-                    <i class="fas fa-microscope"></i>
+                
+                <!-- Card 5 -->
+                <div class="category-card">
+                    <div style="font-size: 2.5rem; color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 style="color: #1e293b; margin-bottom: 1rem;">Research Articles</h3>
+                    <p style="color: #475569;">Simplify scientific studies, journal articles, and complex research findings.</p>
+                    <p style="color: #475569; margin-top: 1rem;"><strong>Perfect for:</strong> Academics, journalists</p>
                 </div>
-                <h3>Research Articles</h3>
-                <p>Simplify scientific studies, journal articles, and complex research findings.</p>
-                <p><strong>Perfect for:</strong> Academics, journalists, curious minds</p>
-            </div>
-            
-            <!-- Category 6: Business Reports -->
-            <div class="category-card">
-                <div class="category-icon">
-                    <i class="fas fa-chart-line"></i>
+                
+                <!-- Card 6 -->
+                <div class="category-card">
+                    <div style="font-size: 2.5rem; color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 style="color: #1e293b; margin-bottom: 1rem;">Business Reports</h3>
+                    <p style="color: #475569;">Clarify annual reports, whitepapers, and business analyses (not financial advice).</p>
+                    <p style="color: #475569; margin-top: 1rem;"><strong>Perfect for:</strong> Entrepreneurs, business students</p>
                 </div>
-                <h3>Business Reports</h3>
-                <p>Clarify annual reports, whitepapers, and business analyses (not financial advice).</p>
-                <p><strong>Perfect for:</strong> Entrepreneurs, analysts, business students</p>
             </div>
         </div>
     </section>
 
-    <!-- Code Feature Highlight -->
-    <section class="light-section">
+    <!-- CODE FEATURE -->
+    <section class="section section-light">
         <div class="container">
             <div class="code-feature">
-                <h2><i class="fas fa-star"></i> Our Secret Weapon: Codebase Analysis</h2>
-                <p style="font-size: 1.2rem; color: #cbd5e1;">
+                <h2 style="color: white; margin-bottom: 1rem;">
+                    <i class="fas fa-star"></i> Our Secret Weapon: Codebase Analysis
+                </h2>
+                <p style="color: #e2e8f0; font-size: 1.2rem;">
                     As a Python professor, I built this specifically to help students understand complex code. 
-                    Upload any repository and get a beginner-friendly walkthrough of the architecture, key functions, and learning path.
+                    Upload any repository and get a beginner-friendly walkthrough.
                 </p>
                 <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
                     <code style="color: #7dd3fc; font-size: 1.1rem;">
                         $ Input: Python Flask app<br>
                         $ Output: "This is a web application with 3 main routes..."<br>
-                        $ Learning: "Start by examining app.py, then look at the auth system..."
+                        $ Learning: "Start by examining app.py, then look at auth..."
                     </code>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="light-section">
+    <!-- PRICING -->
+    <section id="pricing" class="section section-light">
         <div class="container">
-            <h2>How It Works</h2>
-            <div class="steps">
-            <div>
-                <div style="background: var(--accent); color: white; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">1</div>
-                <h3>Upload</h3>
-                <p>Choose your document or codebase via text, file upload, or URL</p>
+            <h2 style="text-align: center; margin-bottom: 1rem; color: #1e293b;">Simple, Transparent Pricing</h2>
+            <p style="text-align: center; color: #64748b; margin-bottom: 3rem; font-size: 1.1rem;">
+                No hidden fees. No surprises. Cancel anytime.
+            </p>
+            
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Starter</h3>
+                    <p style="color: #64748b;">For curious minds</p>
+                    <div class="price">$0<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>3 documents per month</li>
+                        <li>Basic document types only</li>
+                        <li>Standard processing speed</li>
+                        <li>Community support</li>
+                    </ul>
+                    <a href="/app/signup" class="btn btn-outline" style="width: 100%;">Get Started Free</a>
+                </div>
+                
+                <!-- Pro Plan - POPULAR -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Pro</h3>
+                    <p style="color: #64748b;">For students & developers</p>
+                    <div class="price">$19.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li><strong>50 documents per month</strong></li>
+                        <li>All document types including codebases</li>
+                        <li>Priority processing</li>
+                        <li>Codebase analysis feature</li>
+                        <li>Email support</li>
+                        <li>1-hour auto-delete guarantee</li>
+                    </ul>
+                    <a href="/app/signup?plan=pro" class="btn" style="width: 100%;">Start 14-Day Trial</a>
+                    <p style="color: #64748b; font-size: 0.9rem; margin-top: 1rem;">No credit card required for trial</p>
+                </div>
+                
+                <!-- Team Plan -->
+                <div class="pricing-card">
+                    <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Team</h3>
+                    <p style="color: #64748b;">For classrooms & small teams</p>
+                    <div class="price">$49.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>5 team members</li>
+                        <li>200 documents per month</li>
+                        <li>All Pro features</li>
+                        <li>Team management dashboard</li>
+                        <li>Priority email & chat support</li>
+                        <li>Usage analytics</li>
+                    </ul>
+                    <a href="/contact" class="btn btn-outline" style="width: 100%;">Contact for Team Plan</a>
+                </div>
             </div>
-            <div>
-                <div style="background: var(--accent); color: white; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">2</div>
-                <h3>AI Analysis</h3>
-                <p>Our AI processes and simplifies the content</p>
-            </div>
-            <div>
-                <div style="background: var(--accent); color: white; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">3</div>
-                <h3>Understand</h3>
-                <p>Receive clear, plain-English explanations</p>
-            </div>
-            <div>
-                <div style="background: var(--accent); color: white; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">4</div>
-                <h3>Auto-Delete</h3>
-                <p>Your document is automatically deleted within 1 hour</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Upload Safety Modal Example -->
-    <section id="upload" class="container" style="max-width: 800px; margin: 4rem auto;">
-        <h2 style="text-align: center; margin-bottom: 2rem;">Ready to Decipher?</h2>
-        
-        <!-- Tab Interface Example -->
-        <div role="tablist" style="margin-bottom: 2rem;">
-            <button role="tab">Paste Text</button>
-            <button role="tab">Upload File</button>
-            <button role="tab">Enter URL</button>
-            <button role="tab" aria-selected="true">Codebase</button>
-        </div>
-        
-        <!-- Safety Checkbox -->
-        <div class="safety-checkbox">
-            <label>
-                <input type="checkbox" required>
-                I confirm this document contains NO medical records, legal contracts, financial data, or personally identifiable information (PII).
-            </label>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--secondary);">
-                <i class="fas fa-info-circle"></i> All files are encrypted and automatically deleted within 1 hour.
+            
+            <p style="text-align: center; color: #64748b; margin-top: 2rem;">
+                <i class="fas fa-lock"></i> All plans include: 256-bit encryption • 1-hour auto-delete • No data retention
             </p>
         </div>
-        
-        <!-- CTA -->
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="/app" role="button" class="cta-button" style="padding: 1.2rem 3rem;">
-                <i class="fas fa-lock"></i> Secure Login to App
-            </a>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="section section-light">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem; color: #1e293b;">How It Works</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+                <!-- Step 1 -->
+                <div>
+                    <div style="background: #3b82f6; color: white; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">1</div>
+                    <h3 style="color: #1e293b;">Upload</h3>
+                    <p style="color: #475569;">Choose your document or codebase via text, file, URL, or GitHub</p>
+                </div>
+                <!-- Step 2 -->
+                <div>
+                    <div style="background: #3b82f6; color: white; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">2</div>
+                    <h3 style="color: #1e293b;">AI Analysis</h3>
+                    <p style="color: #475569;">Our AI processes and simplifies the content in seconds</p>
+                </div>
+                <!-- Step 3 -->
+                <div>
+                    <div style="background: #3b82f6; color: white; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">3</div>
+                    <h3 style="color: #1e293b;">Understand</h3>
+                    <p style="color: #475569;">Receive clear, plain-English explanations and insights</p>
+                </div>
+                <!-- Step 4 -->
+                <div>
+                    <div style="background: #3b82f6; color: white; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">4</div>
+                    <h3 style="color: #1e293b;">Auto-Delete</h3>
+                    <p style="color: #475569;">Your document is automatically deleted within 1 hour for privacy</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="dark-section">
+    <!-- FOOTER -->
+    <footer class="section section-dark">
         <div class="container">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
                 <div>
-                    <h3><i class="fas fa-lightbulb"></i> DocuDecipher</h3>
-                    <p>Making complex information accessible to everyone.</p>
+                    <h3 style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-lightbulb" style="color: #fbbf24;"></i>
+                        DocuDecipher
+                    </h3>
+                    <p style="color: #cbd5e1; margin-top: 0.5rem;">Making complex information accessible to everyone.</p>
                 </div>
                 <div>
-                    <p><a href="/privacy" style="color: #cbd5e1;">Privacy Policy</a> • 
-                       <a href="/terms" style="color: #cbd5e1;">Terms of Service</a> • 
-                       <a href="/contact" style="color: #cbd5e1;">Contact</a></p>
-                    <p style="color: #94a3b8; font-size: 0.9rem;">
+                    <p style="color: #cbd5e1;">
+                        <a href="/privacy" style="color: #cbd5e1; text-decoration: none; margin-right: 1rem;">Privacy Policy</a>
+                        <a href="/terms" style="color: #cbd5e1; text-decoration: none; margin-right: 1rem;">Terms of Service</a>
+                        <a href="/contact" style="color: #cbd5e1; text-decoration: none;">Contact</a>
+                    </p>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">
                         <i class="fas fa-shield-alt"></i> All documents auto-deleted within 1 hour
                     </p>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9rem;">
+                <p>© 2025 DocuDecipher.</p>
             </div>
         </div>
     </footer>
