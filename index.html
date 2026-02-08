@@ -13,17 +13,92 @@
         --hover: #1e293b;      /* Darker blue for hover */
         --accent: #3b82f6;     /* Bright blue for CTAs */
         --light: #f8fafc;      /* Off-white background */
-        --text-dark: #1e293b;  /* Dark text for readability */
-        --text-medium: #475569; /* Medium text */
+        --text-light: #f1f5f9; /* Light text for dark backgrounds */
+        --text-medium: #cbd5e1; /* Medium text for dark backgrounds */
     }
     
-    /* Base text contrast */
+    /* RESTORE DARK BACKGROUND */
     body {
-        color: var(--text-dark);
-        background: white;
+        color: var(--text-light);  /* Light text for dark background */
+        background: var(--primary); /* Your original dark blue */
     }
     
-    /* Hero Section */
+    /* Make sure all sections have proper contrast */
+    section:not(.hero):not(.code-feature):not(footer) {
+        background: white;
+        color: var(--primary);  /* Dark text for white sections */
+        padding: 2rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+    }
+    
+    /* Fix: Category Cards should have dark text on white */
+    .category-card,
+    .feature-highlight,
+    #how-it-works > div {
+        background: white;
+        color: var(--primary);
+    }
+    
+    .category-card h3,
+    .category-card p,
+    .category-card strong {
+        color: var(--primary);
+    }
+    
+    /* Safety Notice - DARK TEXT on YELLOW */
+    .safety-notice {
+        background: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 4px;
+        color: #78350f;  /* DARK BROWN - fixed! */
+    }
+    
+    .safety-notice h3 {
+        color: #92400e;  /* Dark orange-brown */
+    }
+    
+    /* FIX BULLET POINTS in Safety Notice */
+    .safety-notice ul {
+        color: #78350f;  /* Same as parent text */
+    }
+    
+    .safety-notice li {
+        color: #78350f;  /* Dark text for bullets */
+        margin-bottom: 0.5rem;
+    }
+    
+    .safety-notice li strong {
+        color: #92400e;  /* Slightly darker for emphasis */
+    }
+
+    .safety-notice,
+    .safety-notice * {
+        color: #78350f !important;
+    }
+    
+    .safety-notice strong {
+        color: #92400e !important;
+    }
+        
+    /* Navbar - ensure contrast */
+    nav {
+        background: var(--primary);
+        color: var(--text-light);
+    }
+    
+    nav a {
+        color: var(--text-light);
+    }
+    
+    nav a:hover {
+        color: white;
+        background: var(--hover);
+    }
+    
+    /* Hero stays dark */
     .hero {
         background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         color: white;
@@ -31,121 +106,7 @@
         text-align: center;
     }
     
-    .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: white;
-    }
-    
-    .hero .subtitle {
-        font-size: 1.5rem;
-        color: #e2e8f0;  /* Lighter but still good contrast on dark */
-        margin-bottom: 2rem;
-    }
-    
-    /* Category Cards - FIXED CONTRAST */
-    .category-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin: 3rem 0;
-    }
-    
-    .category-card {
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 2rem;
-        transition: all 0.3s ease;
-        background: white;
-        color: var(--text-dark);  /* Explicit dark text */
-    }
-    
-    .category-card h3 {
-        color: var(--text-dark);
-        margin-bottom: 1rem;
-    }
-    
-    .category-card p {
-        color: var(--text-medium);  /* Better contrast than light gray */
-        line-height: 1.6;
-    }
-    
-    .category-card:hover {
-        border-color: var(--accent);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        transform: translateY(-5px);
-    }
-    
-    .category-icon {
-        font-size: 2.5rem;
-        color: var(--accent);
-        margin-bottom: 1rem;
-    }
-    
-    /* Safety Notice - IMPROVED CONTRAST */
-    .safety-notice {
-        background: #fffbeb;  /* Warmer, better contrast */
-        border-left: 4px solid #f59e0b;
-        padding: 1.5rem;
-        margin: 2rem 0;
-        border-radius: 4px;
-        color: #78350f;  /* Dark brown text */
-    }
-    
-    .safety-notice h3 {
-        color: #92400e;
-    }
-    
-    /* Safety Checkbox */
-    .safety-checkbox {
-        background: #f1f5f9;
-        padding: 1.5rem;
-        border-radius: 8px;
-        margin: 1rem 0;
-        color: var(--text-dark);
-        border: 1px solid #cbd5e1;
-    }
-    
-    .safety-checkbox label {
-        color: var(--text-dark);
-        font-weight: 500;
-    }
-    
-    .safety-checkbox input[type="checkbox"] {
-        margin-right: 10px;
-    }
-    
-    /* CTA Buttons */
-    .cta-button {
-        background: var(--accent);
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 8px;
-        font-weight: bold;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-    }
-    
-    .cta-button:hover {
-        background: #2563eb;
-        transform: scale(1.05);
-        color: white;
-    }
-    
-    /* Feature Highlight */
-    .feature-highlight {
-        background: var(--light);
-        padding: 4rem 1rem;
-        text-align: center;
-        color: var(--text-dark);
-    }
-    
-    .feature-highlight h2 {
-        color: var(--text-dark);
-    }
-    
+    /* Code feature stays dark */
     .code-feature {
         background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         color: white;
@@ -154,80 +115,24 @@
         margin: 2rem 0;
     }
     
-    .code-feature h2 {
-        color: white;
-    }
-    
-    .code-feature p {
-        color: #e2e8f0;
-    }
-    
-    /* Tab Interface */
-    [role="tablist"] button {
-        background: #f8fafc;
-        color: var(--text-medium);
-        border: 1px solid #e2e8f0;
-        padding: 0.75rem 1.5rem;
-    }
-    
-    [role="tablist"] button[aria-selected="true"] {
-        background: var(--accent);
-        color: white;
-        border-color: var(--accent);
-    }
-    
-    /* General typography improvements */
-    h1, h2, h3, h4 {
-        color: var(--text-dark);
-    }
-    
-    p {
-        color: var(--text-medium);
-    }
-    
-    /* Footer */
+    /* Footer stays dark */
     footer {
         background: var(--primary);
-        color: #e2e8f0;  /* Light enough for dark background */
+        color: var(--text-light);
     }
     
-    footer a {
-        color: #cbd5e1;
+    /* How It Works section - ensure white background */
+    #how-it-works {
+        background: white;
+        color: var(--primary);
+        padding: 2rem;
+        border-radius: 8px;
     }
     
-    footer a:hover {
-        color: white;
-    }
-    
-    /* Accessibility: Focus outlines */
-    :focus {
-        outline: 3px solid var(--accent);
-        outline-offset: 2px;
-    }
-    
-    /* For neurodivergent users: reduced motion option */
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-        
-        .category-card:hover {
-            transform: none;
-        }
-        
-        .cta-button:hover {
-            transform: none;
-        }
-
-        
-        .high-contrast-test {
-            filter: grayscale(100%) contrast(200%);
-        }
-
-
-        
+    #how-it-works h2,
+    #how-it-works h3,
+    #how-it-works p {
+        color: var(--primary);
     }
 </style>
 </head>
@@ -269,17 +174,6 @@
             <li>🛡️ <strong>Your privacy:</strong> All files encrypted and automatically deleted within 1 hour</li>
         </ul>
     </div>
-
-
-
-    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-        <button onclick="toggleContrast()" style="background: #333; color: white; padding: 10px; border-radius: 5px;">
-            👁️ Test Contrast
-        </button>
-    </div>
-
-
-    
     <!-- 6 Categories -->
     <section id="features" class="container">
         <h2 style="text-align: center; margin-bottom: 3rem;">What Can You Decipher?</h2>
@@ -443,15 +337,5 @@
             </div>
         </div>
     </footer>
-
-
-    <script>
-        function toggleContrast() {
-            document.body.classList.toggle('high-contrast-test');
-        }
-    </script>
-
-
-    
 </body>
 </html>
