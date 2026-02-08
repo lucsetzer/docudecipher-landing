@@ -7,47 +7,69 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    :root {
-        --primary: #0f172a;    /* Main dark blue */
-        --secondary: #64748b;  /* Muted slate */
-        --hover: #1e293b;      /* Darker blue for hover */
-        --accent: #3b82f6;     /* Bright blue for CTAs */
-        --light: #f8fafc;      /* Off-white background */
-        --text-light: #f1f5f9; /* Light text for dark backgrounds */
-        --text-medium: #cbd5e1; /* Medium text for dark backgrounds */
-        --text-dark: #1e293b;  /* Dark text for light backgrounds */
+    /* GLOBAL RESET - No surprises */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
     
-    /* Base styles */
     body {
-        color: var(--text-light);
-        background: var(--primary);
+        font-family: system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
     }
     
-    /* Container override to keep content centered */
     .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 1rem;
     }
     
-    /* Safety Notice - FIXED WIDTH */
+    /* ===== DARK SECTIONS ===== */
+    /* These have DARK background, LIGHT text */
+    .dark-section {
+        background: #0f172a;
+        color: #f1f5f9;
+        padding: 4rem 1rem;
+    }
+    
+    /* Navbar is dark */
+    nav.dark-section {
+        padding: 1rem;
+    }
+    
+    /* Hero is dark with gradient */
+    .hero.dark-section {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        text-align: center;
+    }
+    
+    /* Footer is dark */
+    footer.dark-section {
+        padding: 3rem 1rem;
+    }
+    
+    /* ===== LIGHT SECTIONS ===== */
+    /* These have WHITE background, DARK text */
+    .light-section {
+        background: white;
+        color: #1e293b;
+        padding: 4rem 1rem;
+    }
+    
+    /* ===== SPECIAL COMPONENTS ===== */
+    /* Safety Notice - YELLOW with DARK text */
     .safety-notice {
         background: #fffbeb;
         border-left: 4px solid #f59e0b;
         padding: 1.5rem;
-        margin: 2rem auto;  /* Center it */
+        margin: 2rem 0;
         border-radius: 4px;
         color: #78350f;
-        max-width: 1200px;  /* Limit width */
     }
     
     .safety-notice h3 {
         color: #92400e;
-    }
-    
-    .safety-notice ul {
-        color: #78350f;
     }
     
     .safety-notice li {
@@ -55,118 +77,105 @@
         margin-bottom: 0.5rem;
     }
     
-    .safety-notice li strong {
-        color: #92400e;
-    }
-    
-    /* Category Grid - FIXED RESPONSIVE LAYOUT */
+    /* Category Grid - SIMPLE */
     .category-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         margin: 3rem 0;
     }
     
     .category-card {
+        background: white;
         border: 2px solid #e2e8f0;
         border-radius: 12px;
         padding: 2rem;
+        color: #1e293b;
         transition: all 0.3s ease;
-        background: white;
-        color: var(--text-dark);
-    }
-    
-    .category-card h3 {
-        color: var(--text-dark);
-        margin-bottom: 1rem;
-    }
-    
-    .category-card p {
-        color: var(--text-dark);
-        opacity: 0.9;
-        line-height: 1.6;
     }
     
     .category-card:hover {
-        border-color: var(--accent);
+        border-color: #3b82f6;
         box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         transform: translateY(-5px);
     }
     
     .category-icon {
         font-size: 2.5rem;
-        color: var(--accent);
+        color: #3b82f6;
         margin-bottom: 1rem;
     }
     
-    /* Section styling - but NOT for container sections */
-    section {
-        padding: 4rem 0;
-    }
-    
-    /* White background for content sections */
-    #features,
-    #how-it-works,
-    .feature-highlight {
-        background: white;
-        color: var(--text-dark);
-    }
-    
-    #features h2,
-    #how-it-works h2,
-    .feature-highlight h2 {
-        color: var(--text-dark);
-    }
-    
-    /* Hero stays dark */
-    .hero {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    /* Code Feature - DARK with LIGHT text */
+    .code-feature {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         color: white;
-        padding: 4rem 1rem;
+        border-radius: 12px;
+        padding: 3rem;
+        margin: 2rem 0;
+    }
+    
+    .code-feature h2,
+    .code-feature p {
+        color: white;
+    }
+    
+    /* CTA Buttons */
+    .cta-button {
+        background: #3b82f6;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .cta-button:hover {
+        background: #2563eb;
+        transform: scale(1.05);
+    }
+    
+    /* How It Works steps */
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
         text-align: center;
     }
     
-    /* Navbar */
-    nav {
-        background: var(--primary);
-        color: var(--text-light);
-    }
-    
-    nav a {
-        color: var(--text-light);
-    }
-    
-    nav a:hover {
+    .step-number {
+        background: #3b82f6;
         color: white;
-        background: var(--hover);
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        font-weight: bold;
     }
-    
-    /* Fix safety notice width */
-    .safety-notice {
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    
 </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="container-fluid">
-        <ul>
-            <li><strong><i class="fas fa-lightbulb"></i> DocuDecipher</strong></li>
-        </ul>
-        <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#" role="button" class="cta-button">Try Free</a></li>
-        </ul>
+    <nav class="dark-section">
+        <div class="container">
+            <ul>
+                <li><strong><i class="fas fa-lightbulb"></i> DocuDecipher</strong></li>
+            </ul>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#" role="button" class="cta-button">Try Free</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero dark-section">
         <div class="container">
             <h1>Understand Code & Documents in Plain English</h1>
             <p class="subtitle">DocuDecipher helps students, developers, and researchers unpack complex codebases, academic papers, and technical documentation.</p>
@@ -179,7 +188,6 @@
         </div>
     </section>
 
-    <!-- Safety Notice -->
     <!-- Safety Notice -->
     <div class="container">
         <div class="safety-notice">
@@ -194,9 +202,9 @@
     </div>
     
     <!-- 6 Categories -->
-    <section id="features">
+    <section id="features" class="light-section">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 3rem;">What Can You Decipher?</h2>
+            <h2>What Can You Decipher?</h2>
             <div class="category-grid">
              <!-- Category 1: Codebases -->
             <div class="category-card">
@@ -261,7 +269,7 @@
     </section>
 
     <!-- Code Feature Highlight -->
-    <section class="feature-highlight">
+    <section class="light-section">
         <div class="container">
             <div class="code-feature">
                 <h2><i class="fas fa-star"></i> Our Secret Weapon: Codebase Analysis</h2>
@@ -281,9 +289,10 @@
     </section>
 
     <!-- How It Works -->
-    <section id="how-it-works" class="container" style="padding: 4rem 1rem;">
-        <h2 style="text-align: center; margin-bottom: 3rem;">How It Works</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+    <section id="how-it-works" class="light-section">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
             <div>
                 <div style="background: var(--accent); color: white; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">1</div>
                 <h3>Upload</h3>
@@ -339,7 +348,7 @@
     </section>
 
     <!-- Footer -->
-    <footer style="background: var(--primary); color: white; padding: 3rem 1rem; margin-top: 4rem;">
+    <footer class="dark-section">
         <div class="container">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <div>
