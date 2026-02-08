@@ -7,109 +7,229 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #0f172a;    /* Main dark blue */
-            --secondary: #64748b;  /* Muted slate */
-            --hover: #1e293b;      /* Darker blue for hover */
-            --accent: #3b82f6;     /* Bright blue for CTAs */
-            --light: #f8fafc;      /* Off-white background */
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 4rem 1rem;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero .subtitle {
-            font-size: 1.5rem;
-            color: #cbd5e1;
-            margin-bottom: 2rem;
-        }
-        
-        /* Category Cards */
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .category-card {
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            background: white;
+    :root {
+        --primary: #0f172a;    /* Main dark blue */
+        --secondary: #64748b;  /* Muted slate */
+        --hover: #1e293b;      /* Darker blue for hover */
+        --accent: #3b82f6;     /* Bright blue for CTAs */
+        --light: #f8fafc;      /* Off-white background */
+        --text-dark: #1e293b;  /* Dark text for readability */
+        --text-medium: #475569; /* Medium text */
+    }
+    
+    /* Base text contrast */
+    body {
+        color: var(--text-dark);
+        background: white;
+    }
+    
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        padding: 4rem 1rem;
+        text-align: center;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: white;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.5rem;
+        color: #e2e8f0;  /* Lighter but still good contrast on dark */
+        margin-bottom: 2rem;
+    }
+    
+    /* Category Cards - FIXED CONTRAST */
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+    
+    .category-card {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        background: white;
+        color: var(--text-dark);  /* Explicit dark text */
+    }
+    
+    .category-card h3 {
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+    }
+    
+    .category-card p {
+        color: var(--text-medium);  /* Better contrast than light gray */
+        line-height: 1.6;
+    }
+    
+    .category-card:hover {
+        border-color: var(--accent);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transform: translateY(-5px);
+    }
+    
+    .category-icon {
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin-bottom: 1rem;
+    }
+    
+    /* Safety Notice - IMPROVED CONTRAST */
+    .safety-notice {
+        background: #fffbeb;  /* Warmer, better contrast */
+        border-left: 4px solid #f59e0b;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 4px;
+        color: #78350f;  /* Dark brown text */
+    }
+    
+    .safety-notice h3 {
+        color: #92400e;
+    }
+    
+    /* Safety Checkbox */
+    .safety-checkbox {
+        background: #f1f5f9;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        color: var(--text-dark);
+        border: 1px solid #cbd5e1;
+    }
+    
+    .safety-checkbox label {
+        color: var(--text-dark);
+        font-weight: 500;
+    }
+    
+    .safety-checkbox input[type="checkbox"] {
+        margin-right: 10px;
+    }
+    
+    /* CTA Buttons */
+    .cta-button {
+        background: var(--accent);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .cta-button:hover {
+        background: #2563eb;
+        transform: scale(1.05);
+        color: white;
+    }
+    
+    /* Feature Highlight */
+    .feature-highlight {
+        background: var(--light);
+        padding: 4rem 1rem;
+        text-align: center;
+        color: var(--text-dark);
+    }
+    
+    .feature-highlight h2 {
+        color: var(--text-dark);
+    }
+    
+    .code-feature {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        color: white;
+        border-radius: 12px;
+        padding: 3rem;
+        margin: 2rem 0;
+    }
+    
+    .code-feature h2 {
+        color: white;
+    }
+    
+    .code-feature p {
+        color: #e2e8f0;
+    }
+    
+    /* Tab Interface */
+    [role="tablist"] button {
+        background: #f8fafc;
+        color: var(--text-medium);
+        border: 1px solid #e2e8f0;
+        padding: 0.75rem 1.5rem;
+    }
+    
+    [role="tablist"] button[aria-selected="true"] {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+    }
+    
+    /* General typography improvements */
+    h1, h2, h3, h4 {
+        color: var(--text-dark);
+    }
+    
+    p {
+        color: var(--text-medium);
+    }
+    
+    /* Footer */
+    footer {
+        background: var(--primary);
+        color: #e2e8f0;  /* Light enough for dark background */
+    }
+    
+    footer a {
+        color: #cbd5e1;
+    }
+    
+    footer a:hover {
+        color: white;
+    }
+    
+    /* Accessibility: Focus outlines */
+    :focus {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+    }
+    
+    /* For neurodivergent users: reduced motion option */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
         }
         
         .category-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
-        }
-        
-        .category-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-        
-        /* Safety Notice */
-        .safety-notice {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-        }
-        
-        /* Upload Modal Safety */
-        .safety-checkbox {
-            background: #f1f5f9;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-        
-        /* CTA Buttons */
-        .cta-button {
-            background: var(--accent);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            transform: none;
         }
         
         .cta-button:hover {
-            background: #2563eb;
-            transform: scale(1.05);
+            transform: none;
         }
+
         
-        /* Feature Highlight */
-        .feature-highlight {
-            background: var(--light);
-            padding: 4rem 1rem;
-            text-align: center;
+        .high-contrast-test {
+            filter: grayscale(100%) contrast(200%);
         }
+
+
         
-        .code-feature {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-            border-radius: 12px;
-            padding: 3rem;
-            margin: 2rem 0;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -140,13 +260,26 @@
     </section>
 
     <!-- Safety Notice -->
-    <section class="container" style="margin-top: 2rem;">
-        <div class="safety-notice">
-            <h3><i class="fas fa-shield-alt"></i> Safety First</h3>
-            <p>DocuDecipher is designed for educational and technical documents. Please do not upload medical records, legal contracts, or documents containing personal sensitive information. All files are automatically deleted within 1 hour.</p>
-        </div>
-    </section>
+    <div class="safety-notice">
+        <h3><i class="fas fa-shield-alt"></i> Document Safety & Privacy</h3>
+        <p><strong>DocuDecipher is designed for educational and technical documents only.</strong></p>
+        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+            <li>❌ <strong>Do NOT upload:</strong> Medical records, legal contracts, financial documents with account numbers</li>
+            <li>✅ <strong>Perfect for:</strong> Codebases, academic papers, technical docs, research articles</li>
+            <li>🛡️ <strong>Your privacy:</strong> All files encrypted and automatically deleted within 1 hour</li>
+        </ul>
+    </div>
 
+
+
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <button onclick="toggleContrast()" style="background: #333; color: white; padding: 10px; border-radius: 5px;">
+            👁️ Test Contrast
+        </button>
+    </div>
+
+
+    
     <!-- 6 Categories -->
     <section id="features" class="container">
         <h2 style="text-align: center; margin-bottom: 3rem;">What Can You Decipher?</h2>
@@ -296,7 +429,7 @@
         <div class="container">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <div>
-                    <h3><i class="fas fa-lighbulb"></i> DocuDecipher</h3>
+                    <h3><i class="fas fa-lightbulb"></i> DocuDecipher</h3>
                     <p>Making complex information accessible to everyone.</p>
                 </div>
                 <div>
@@ -310,5 +443,15 @@
             </div>
         </div>
     </footer>
+
+
+    <script>
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast-test');
+        }
+    </script>
+
+
+    
 </body>
 </html>
